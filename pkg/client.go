@@ -65,6 +65,10 @@ type RpcRequestBuilder struct {
 	params     map[string]interface{}
 }
 
+func (b *RpcRequestBuilder) OverwriteHeader(key, value string) {
+	b.header.Set(key, value)
+}
+
 func (c *Client) Rpc(f string, params map[string]interface{}) *RpcRequestBuilder {
 	return &RpcRequestBuilder{
 		client:     c,
